@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./client-view/home/home.component";
 import {CatalogueComponent} from "./client-view/catalogue/catalogue.component";
 import {AboutPageComponent} from "./client-view/about-page/about-page.component";
+import {ProductComponent} from "./client-view/product/product.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent },
@@ -11,7 +12,7 @@ const routes: Routes = [
   {path: 'catalogo', component: CatalogueComponent},
   {path: 'catalogo/:categoria', component: CatalogueComponent},
   {path: 'sobre-nosotros', component: AboutPageComponent},
-  {path: 'detalle-producto/:id', component: HomeComponent}
+  {path: 'producto/:id', component: ProductComponent}
 ];
 
 @NgModule({

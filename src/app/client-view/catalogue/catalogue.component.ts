@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoriaModel} from "../../models/categoria.model";
 import {ProductoModel} from "../../models/producto.model";
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-catalogue',
@@ -8,6 +10,7 @@ import {ProductoModel} from "../../models/producto.model";
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent implements OnInit {
+  faSearch = faSearch;
   selectedCategoria: CategoriaModel | undefined;
   productos:ProductoModel[] = [
     new ProductoModel(1, "Teclado Mecanico", 85000, "Teclado gamer de tipo mecanico...", "tecladoMecanico.jpg", 5, 1),
@@ -31,7 +34,7 @@ export class CatalogueComponent implements OnInit {
     new CategoriaModel(2, "Portatiles", this.productos),
   ];
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -42,5 +45,9 @@ export class CatalogueComponent implements OnInit {
 
   cleanSelectedCategoria() {
     this.selectedCategoria = undefined;
+  }
+
+  verProducto(id: number) {
+    this.router.navigate(['producto', id]);
   }
 }

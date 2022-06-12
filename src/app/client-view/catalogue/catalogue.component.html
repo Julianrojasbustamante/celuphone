@@ -4,7 +4,7 @@
     <p class="display-5 my-5 text-center">{{selectedCategoria ?selectedCategoria.nombre: 'Escoge una categoría o busca tu producto'}}</p>
     <div class="section" *ngIf="!selectedCategoria">
       <div class="input-group my-4">
-        <span class="input-group-text" id="addon-wrapping">@</span>
+        <span class="input-group-text" id="addon-wrapping"><fa-icon [icon]="faSearch"></fa-icon></span>
         <input type="text" class="form-control" placeholder="Buscar..">
       </div>
       <div class="row text-center">
@@ -34,7 +34,7 @@
             <hr class="bg-danger" style="height: 2px;">
             <p class="card-text">{{producto.descripcion}}</p>
             <p class="card-text text-center"><b>${{producto.precio| number}}</b></p>
-            <button class="col-12 btn btn-success">Agregar</button>
+            <button class="col-12 btn btn-success" (click)="verProducto(producto.id)">Agregar</button>
           </div>
         </div>
       </div>

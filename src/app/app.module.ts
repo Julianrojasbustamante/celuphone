@@ -16,6 +16,8 @@ import { ClientViewComponent } from './client-view/client-view.component';
 import { HomeComponent } from './client-view/home/home.component';
 import { CatalogueComponent } from './client-view/catalogue/catalogue.component';
 import { AboutPageComponent } from './client-view/about-page/about-page.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ProductComponent } from './client-view/product/product.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AboutPageComponent } from './client-view/about-page/about-page.componen
     ClientViewComponent,
     HomeComponent,
     CatalogueComponent,
-    AboutPageComponent
+    AboutPageComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,8 @@ import { AboutPageComponent } from './client-view/about-page/about-page.componen
     MatToolbarModule,
     MatIconModule,
     MatFormFieldModule,
-    MatCardModule
+    MatCardModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
