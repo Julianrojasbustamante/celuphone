@@ -34,45 +34,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form class="item" #f="ngForm" (ngSubmit)="f.form.valid && login(f)">
           <div class="mb-3 mx-5">
 <!--            <label for="exampleInputEmail1" class="form-label">Usuario</label>-->
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Usuario">
+            <input type="email" class="form-control" id="email" name="email" ngModel required placeholder="Usuario">
           </div>
           <div class="mb-3 mx-5">
 <!--            <label for="exampleInputPassword1" class="form-label">Contraseña</label>-->
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+            <input type="password" class="form-control" id="password" name="password" ngModel required placeholder="Contraseña">
           </div>
         </form>
         <button type="button" class="px-5 py-2 my-3 rounded-pill btn btn-danger">Iniciar sesión</button>
-        <p class="text-center">¿Aún no estas registrado? <br> Regístrate dando clic <a href="#" class="text-danger">aquí</a></p>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header bg-warning">
-        <h5 class="modal-title" id="exampleModalLabel11">Registro</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Usuario</label>
-            <input type="email" class="form-control" id="exampleInputEmail111" placeholder="Usuario">
-          </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword111" placeholder="Contraseña">
-          </div>
-        </form>
-        <p class="text-center">¿Aún no estas registrado? <br> Regístrate dando clic <a href="#" class="text-danger">aquí</a></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger">Iniciar sesión</button>
+        <p class="text-center">¿Aún no estas registrado? <br> Regístrate dando clic <a href="#" data-bs-dismiss="modal" aria-label="Close" (click)="mostrarModalRegistro()" class="text-danger">aquí</a></p>
       </div>
     </div>
   </div>

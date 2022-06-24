@@ -3,53 +3,22 @@
     <p class="text-center display-2 my-4"><b>Inicio</b></p>
     <p class="display-5">Productos destacados</p>
     <div class="row">
-      <div class="card col-md-3 mx-3 my-3" style="width: 18rem; border-radius: 25px;">
+      <div class="card col-md-3 mx-3 my-3" *ngFor="let producto of productosDestacados" style="width: 18rem; border-radius: 25px;">
 <!--        <img src="..." class="card-img-top" alt="...">-->
         <div class="card-body">
-          <h5 class="card-title text-center">Producto 1</h5>
+          <h5 class="card-title text-center">{{producto.nombre}}</h5>
           <hr class="bg-danger" style="height: 2px;">
-          <p class="card-text">Descripción de mi primer
-            producto. Aquí van diferentes
-            especificaciones del mismo, se
-            puede ubicar la descripción corta
-            de no más de 255 caracteres</p>
+          <p class="card-text">{{producto.descripcion}}</p>
         </div>
-      </div>
-      <div class="card col-md-3 mx-3 my-3" style="width: 18rem; border-radius: 25px;">
-        <!--        <img src="..." class="card-img-top" alt="...">-->
-        <div class="card-body">
-          <h5 class="card-title text-center">Producto 2</h5>
-          <hr class="bg-danger" style="height: 2px;">
-          <p class="card-text">Descripción de mi primer
-            producto. Aquí van diferentes
-            especificaciones del mismo, se
-            puede ubicar la descripción corta
-            de no más de 255 caracteres</p>
-        </div>
-      </div>
-      <div class="card col-md-3 mx-3 my-3" style="width: 18rem; border-radius: 25px;">
-        <!--        <img src="..." class="card-img-top" alt="...">-->
-        <div class="card-body">
-          <h5 class="card-title text-center">Producto 3</h5>
-          <hr class="bg-danger" style="height: 2px;">
-          <p class="card-text">Descripción de mi primer
-            producto. Aquí van diferentes
-            especificaciones del mismo, se
-            puede ubicar la descripción corta
-            de no más de 255 caracteres</p>
-        </div>
+        <a class="col-12 btn btn-success my-4" [routerLink]="['/producto', producto.id]">Ver detalle</a>
       </div>
     </div>
     <p class="display-5 my-5">Categorias destacadas</p>
     <div class="row text-center">
-      <div class="col-md-3">
-        <button type="button" class="my-3 rounded-pill btn btn-warning px-5 py-2">PC Gamer</button>
-      </div>
-      <div class="col-md-3">
-        <button type="button" class="my-3 rounded-pill btn btn-danger px-5 py-2">Portatiles</button>
-      </div>
-      <div class="col-md-3">
-        <button type="button" class="my-3 rounded-pill border border-dark btn btn-light px-5 py-2">Teclados</button>
+      <div class="col-md-3" *ngFor="let categoria of categorias; let i = index">
+        <a [routerLink]="['/catalogo', categoria.id]" *ngIf="i == 0" type="button" class="my-3 rounded-pill btn btn-warning px-5 py-2">{{categoria.nombre}}</a>
+        <a [routerLink]="['/catalogo', categoria.id]" *ngIf="i == 1" type="button" class="my-3 rounded-pill btn btn-danger px-5 py-2">{{categoria.nombre}}</a>
+        <a [routerLink]="['/catalogo', categoria.id]" *ngIf="i == 2" type="button" class="my-3 rounded-pill border border-dark btn btn-light px-5 py-2">{{categoria.nombre}}</a>
       </div>
     </div>
   </div>

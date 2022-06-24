@@ -18,6 +18,8 @@ import { CatalogueComponent } from './client-view/catalogue/catalogue.component'
 import { AboutPageComponent } from './client-view/about-page/about-page.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductComponent } from './client-view/product/product.component';
+import { RegisterComponent } from './core/register/register.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { ProductComponent } from './client-view/product/product.component';
     HomeComponent,
     CatalogueComponent,
     AboutPageComponent,
-    ProductComponent
+    ProductComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { ProductComponent } from './client-view/product/product.component';
     MatIconModule,
     MatFormFieldModule,
     MatCardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
