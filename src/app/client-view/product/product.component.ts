@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ProductoModel} from "../../models/producto.model";
 import {DataServices} from "../../services/data.services";
+import Swal from'sweetalert2';
 
 @Component({
   selector: 'app-product',
@@ -12,6 +13,7 @@ export class ProductComponent implements OnInit {
   index: number | undefined;
   selectedProduct: ProductoModel | undefined;
   productos:ProductoModel[] = [];
+  cantidad = 1;
   constructor(
     private route:ActivatedRoute,
     private dataService:DataServices
@@ -37,7 +39,41 @@ export class ProductComponent implements OnInit {
   }
 
   guardarProductos(){
-    this.dataService.guardarProductos(this.productos);
+    // this.dataService.guardarProductos(this.productos);
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: 'mx-2 btn btn-success',
+        cancelButton: 'btn btn-danger'
+      },
+      buttonsStyling: false
+    })
+
+    swalWithBootstrapButtons.fire({
+      title: '¿Estas seguro de agregar el producto ' + this.selectedProduct?.nombre + " con la cantiadad " + this.cantidad + "?",
+      text: "Sí ya lo tenias agregado y lo vuelves a agregar se reemplzará con la cantidad especificada",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, agregar!',
+      cancelButtonText: 'No, cancelar!',
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire(
+          'Agregado!',
+          'Tu producto ha sido agregado al carrito de compras.',
+          'success'
+        )
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire(
+          'Cancelado',
+          'El producto no fue agregado al carrito de compras.',
+          'error'
+        )
+      }
+    })
   }
 
   obtenerProducto() {

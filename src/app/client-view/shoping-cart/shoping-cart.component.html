@@ -7,18 +7,50 @@
           <div class="card-body">
             <h5 class="card-title text-center">{{producto.nombre}}</h5>
             <hr class="bg-danger" style="height: 2px;">
-            <p class="card-text">{{producto.nombre}}</p>
+            <p class="card-text">Cantidad: 1</p>
             <p class="card-text text-center"><b>${{producto.precio| number}}</b></p>
             <button class="col-12 btn btn-danger" (click)="eliminarProducto()">Eliminar</button>
           </div>
         </div>
       </div>
-      <div class="col-12" *ngIf="!productos">
+      <div class="row d-flex justify-content-center" *ngIf="!productos">
         <p class="my-5 display-4 text-center">Aún no has agregado ningún articulo a tu carrito de compras :(</p>
+        <div class="col-2">
+          <button class="py-2 rounded-pill btn btn-warning" (click)="verCatalogo()">Ver catálogo</button>
+        </div>
       </div>
     </div>
-    <div class="d-flex flex-row-reverse bd-highlight fixed-action-btn fixed-bottom mb-5" *ngIf="productos">
-      <button type="button" class="mb-5 mx-4 p-3 bd-highlight py-3 px-4 rounded-pill btn btn-warning"><h4>Realizar el pedido</h4></button>
+    <div *ngIf="productos" class="d-flex flex-row-reverse bd-highlight fixed-action-btn fixed-bottom mb-5">
+      <button (click)="realizarPedido()" type="button" class="mb-5 mx-4 p-3 bd-highlight py-3 px-4 rounded-pill btn btn-warning"><h4>Realizar el pedido</h4></button>
+<!--      <button data-bs-toggle="modal" data-bs-target="#modalRealizarPedido" type="button" class="mb-5 mx-4 p-3 bd-highlight py-3 px-4 rounded-pill btn btn-warning"><h4>Realizar el pedido</h4></button>-->
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade text-center" id="modalRealizarPedido" tabindex="-1" aria-labelledby="modalRealizarPedido" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-warning">
+        <h5 class="modal-title" id="modalRealizarPedidolLabel">Registrar pedido</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form *ngIf="!confirmarPedido" class="item" #f="ngForm" (ngSubmit)="f.form.valid">
+          <div class="mb-3 mx-5">
+            <h3 class="mb-4">El valor total de tu pedido es de:</h3>
+            <h2 class="my-5">$8.500.000 COP</h2>
+          </div>
+          <button type="submit" class="px-5 py-2 my-3 mx-2 rounded-pill btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="px-5 py-2 my-3 mx-2 rounded-pill btn btn-success" (click)="confirmarPedido = !confirmarPedido">Confirmar</button>
+        </form>
+        <form *ngIf="confirmarPedido" class="item" #f="ngForm" (ngSubmit)="f.form.valid">
+          <div class="mb-3 mx-5">
+            <h2 class="mb-4">Tu pedido fue registrado con éxito</h2>
+            <h5 class="">Pronto uno de nuestros asesores se pondrá en contacto contigo para indicarte los medios de pago autorizados.</h5>
+            <button (click)="eliminarProducto()" type="submit" class="px-5 py-2 my-3 rounded-pill btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

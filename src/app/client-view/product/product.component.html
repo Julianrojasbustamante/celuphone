@@ -26,10 +26,16 @@
         <div class="card-body rounded-3" style="border: black solid 1px">
           <h1 class="card-title text-center">{{selectedProduct.nombre}}</h1>
           <hr class="bg-danger" style="height: 2px;">
-          <div class="overflow-auto" style="height: 300px;">
+          <div class="overflow-auto" style="height: 200px;">
             <p class="card-text" style=""><span>{{selectedProduct.descripcion}}</span></p>
           </div>
-          <h2 class="card-text text-center"><b>${{selectedProduct.precio | number}}</b></h2>
+          <h2 class="card-text text-center"><b>${{selectedProduct.precio * cantidad | number}}</b></h2>
+          <div class="row d-flex justify-content-center my-3">
+            <h5 class="text-center">Cantidad:</h5>
+            <button *ngIf="cantidad > 1" class="col-1 btn btn-primary" (click)="cantidad = cantidad - 1">-</button>
+            <input class="col-1 mx-1" disabled type="text" name="cantidad" id="cantidad" [(ngModel)]="cantidad">
+            <button *ngIf="cantidad < 50" class="col-1 btn btn-primary" (click)="cantidad = cantidad + 1">+</button>
+          </div>
           <button class="col-12 btn btn-success" (click)="guardarProductos()">Agregar</button>
         </div>
       </div>

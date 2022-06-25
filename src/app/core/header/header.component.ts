@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {NgForm} from "@angular/forms";
 import {DataServices} from "../../services/data.services";
 import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import Swal from'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -38,17 +39,26 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['carrito-compras']);
   }
 
-  mostrarModalRegistro() {
-    this.router.navigate(['registro']);
-  }
-
   login(f: NgForm) {
     const email = f.value.email;
     const password = f.value.password;
-    this.token = "sa";
-    // this.router.navigate(['registro']);
-    // this.service.login(email, password);
-    // this.token = this.service.getIDtoken();
+    if (password == "a1019150999A" && email == "julianrjs15@gmail.com"){
+      this.token = "sa";
+      Swal.fire(
+        'Inicio de sesión exitoso!',
+        'Bienvenido Julián Rojas Bustamante!',
+        'success'
+      )
+    }else
+      Swal.fire(
+        'Inicio de sesión fallido',
+        'Usuario o contraseña incorrectos.',
+        'error'
+      )
+  }
+
+  mostrarModalRegistro() {
+    this.router.navigate(['registro']);
   }
 
   cerrarSesion() {
