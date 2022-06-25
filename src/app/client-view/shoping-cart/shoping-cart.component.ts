@@ -13,7 +13,7 @@ import {ProductoShopingCartModel} from "../../models/producto-shoping-cart.model
 export class ShopingCartComponent implements OnInit {
   productosCarrito: ProductoShopingCartModel[] = [
     new ProductoShopingCartModel(1, "TECLADO LOGITECH", 85000, "TECLADO GAMING LOGITECH G915 TKL MECANICO NEGRO RGB", 2),
-    new ProductoShopingCartModel(1, "AEROCOOL SI-5200", 1850000, "EQUIPO AEROCOOL SI-5200 AMD RYZEN 5 4650G", 1),
+    new ProductoShopingCartModel(2, "AEROCOOL SI-5200", 1850000, "EQUIPO AEROCOOL SI-5200 AMD RYZEN 5 4650G", 1),
   ];
   productos: ProductoModel[] | undefined;
   total = 0;
@@ -53,8 +53,8 @@ export class ShopingCartComponent implements OnInit {
     })
 
     swalWithBootstrapButtons.fire({
-      title: '¿Estas seguro de realizar el pedido?',
-      text: "El valor total de tu pedido es de: $" + this.total.toLocaleString(),
+      title: "El valor total de tu pedido es de: $" + this.total.toLocaleString(),
+      text: '¿Estas seguro de realizar el pedido?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Confirmar!',

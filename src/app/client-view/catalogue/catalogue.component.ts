@@ -10,12 +10,29 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./catalogue.component.css']
 })
 export class CatalogueComponent implements OnInit {
+  categoriaBuscada = "";
+  coincidenciasBusqueda: CategoriaModel[] | undefined;
   index: number | undefined;
   faSearch = faSearch;
   selectedCategoria: CategoriaModel | undefined;
   teclados:ProductoModel[] = [
     new ProductoModel(1, "TECLADO LOGITECH", 85000, "TECLADO GAMING LOGITECH G915 TKL MECANICO NEGRO RGB", "tecladoMecanico.jpg", 5, 1, ["teclado.png", "teclado-2.png"]),
-    new ProductoModel(2, "TECLADO REDRAGON", 122000, "TECLADO REDRAGON K530W RGB BLANCO DRACONIC INALAMBRICO", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"])
+    new ProductoModel(2, "TECLADO REDRAGON", 122000, "TECLADO REDRAGON K530W RGB BLANCO DRACONIC INALAMBRICO", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(5, "TECLADO EVGA", 390000, "TECLADO EVGA Z15 RGB LINEAR SILVER", "tecladoMecanico.jpg", 5, 1, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(6, "TECLADO GAMER THERMALTAKE", 450000, "TECLADO GAMER THERMALTAKE PREMIUM X1 RGB MECANICO", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(7, "TECLADO UNITEC", 55000, "TECLADO UNITEC GAMER REF MK4", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(8, "TECLADO REDRAGON KUMARA", 170000, "TECLADO REDRAGON KUMARA K552RGB (MEC) BLANCO", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(9, "TECLADO G915", 625000, "TECLADO GAMING LOGITECH G915 TKL MECANICO NEGRO RGB", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(10, "TECLADO G413", 315000, "TECLADO LOGITECH G413 CARBON MECANICO", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(11, "TECLADO GIGABYTE", 345000, "TECLADO MECANICO GIGABYTE AORUS K1 CHERRY MX", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(12, "TECLADO REDRAGON K551", 195000, "TECLADO REDRAGON K551 RGB MITRA NEGRO (MEC)", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(13, "TECLADO T-TGK315W-RD", 190000, "TECLADO T-DAGGER GAMER RGB BLANCO T-TGK315W-RD BORA MEANICO", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(14, "TECLADO T-DAGGER MINI", 110000, "TECLADO T-DAGGER MINI GAMER RGB BLANCO T-TGK321W-BR", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(15, "TECLADO LINEAR BRONCE", 390000, "TECLADO EVGA Z15 RGB LINEAR BRONCE", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(16, "TECLADO LINEAR SILVER", 390000, "TECLADO EVGA Z15 RGB LINEAR SILVER", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(17, "TECLADO MEMBRANA", 165000, "TECLADO EVGA Z12 RGB MEMBRANA", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(18, "TECLADO PRODIGY", 175000, "TECLADO LOGITECH G213 PRODIGY RGB ", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
+    new ProductoModel(19, "TECLADO K552W-RGB", 170000, "TECLADO REDRAGON K552W-RGB KUMARA (MEC) BLANCO SWITH RED", "teclado.jpg", 7, 0, ["teclado.png", "teclado-2.png"]),
   ];
   pcGamer:ProductoModel[] = [
     new ProductoModel(3, "AEROCOOL SI-5200", 1850000, "EQUIPO AEROCOOL SI-5200 AMD RYZEN 5 4650G", "tecladoMecanico.jpg", 5, 1, ["teclado.png", "teclado-2.png"]),
@@ -65,5 +82,18 @@ export class CatalogueComponent implements OnInit {
 
   verProducto(id: number) {
     this.router.navigate(['producto', id]);
+  }
+
+  filtrarCategorias() {
+    this.coincidenciasBusqueda = [];
+    this.categorias.forEach(
+      (categoria)=>{
+        var lowerCategoria = categoria.nombre.toLowerCase();
+        if (lowerCategoria.includes(this.categoriaBuscada.toLowerCase())){
+          this.coincidenciasBusqueda?.push(categoria)
+          console.log(this.coincidenciasBusqueda);
+        }
+      }
+    );
   }
 }

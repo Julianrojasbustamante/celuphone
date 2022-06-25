@@ -13,6 +13,7 @@ export class ProductComponent implements OnInit {
   index: number | undefined;
   selectedProduct: ProductoModel | undefined;
   productos:ProductoModel[] = [];
+  teclados:ProductoModel[] = [];
   cantidad = 1;
   constructor(
     private route:ActivatedRoute,
@@ -39,7 +40,8 @@ export class ProductComponent implements OnInit {
   }
 
   guardarProductos(){
-    // this.dataService.guardarProductos(this.productos);
+    // var nuevosProductos = this.productos.concat(this.teclados);
+    // this.dataService.guardarProductos(nuevosProductos);
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
         confirmButton: 'mx-2 btn btn-success',
@@ -63,6 +65,7 @@ export class ProductComponent implements OnInit {
           'Tu producto ha sido agregado al carrito de compras.',
           'success'
         )
+        this.cantidad = 1;
       } else if (
         /* Read more about handling dismissals below */
         result.dismiss === Swal.DismissReason.cancel
@@ -83,6 +86,5 @@ export class ProductComponent implements OnInit {
           this.selectedProduct = producto;
         }
       );
-      // this.selectedProduct = this.productos[this.index - 1];
   }
 }
