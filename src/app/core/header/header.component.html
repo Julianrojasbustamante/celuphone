@@ -11,15 +11,21 @@
       <span class="navbar-text">
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item mx-1 my-1">
-            <a class="py-2 rounded-pill btn btn-danger text-white" (click)="verSobreNosotros()">Sobre nosotros</a>
+            <a *ngIf="!token" class="py-2 rounded-pill btn btn-danger text-white" (click)="verSobreNosotros()">Sobre nosotros</a>
+            <a *ngIf="token" class="py-2 rounded-pill btn btn-danger text-white" (click)="verSobreNosotros()">Bienvenido Julian Rojas</a>
           </li>
           <li class="nav-item mx-1 my-1">
-<!--            <a class="py-2 rounded-pill btn btn-light" href="/catalogo">Ver catálogo</a>-->
             <button class="py-2 rounded-pill btn btn-light" (click)="verCatalogo()">Ver catálogo</button>
           </li>
-          <li class="nav-item mx-1 my-1">
+          <li *ngIf="!token" class="nav-item mx-1 my-1">
             <a class="py-2 rounded-pill btn btn-light" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Iniciar sesión</a>
           </li>
+           <li *ngIf="token" class="nav-item mx-1 my-1">
+             <button (click)="verCarritoCompras()" class="py-2 rounded-pill btn btn-light" id="addon-wrapping"><fa-icon [icon]="faCartShopping"></fa-icon></button>
+           </li>
+           <li *ngIf="token" class="nav-item mx-1 my-1">
+             <a class="py-2 rounded-pill btn btn-light" href="#" (click)="cerrarSesion()">Salir</a>
+           </li>
         </ul>
       </span>
     </div>
@@ -43,8 +49,8 @@
 <!--            <label for="exampleInputPassword1" class="form-label">Contraseña</label>-->
             <input type="password" class="form-control" id="password" name="password" ngModel required placeholder="Contraseña">
           </div>
+          <button type="submit" class="px-5 py-2 my-3 rounded-pill btn btn-danger" data-bs-dismiss="modal">Iniciar sesión</button>
         </form>
-        <button type="button" class="px-5 py-2 my-3 rounded-pill btn btn-danger">Iniciar sesión</button>
         <p class="text-center">¿Aún no estas registrado? <br> Regístrate dando clic <a href="#" data-bs-dismiss="modal" aria-label="Close" (click)="mostrarModalRegistro()" class="text-danger">aquí</a></p>
       </div>
     </div>

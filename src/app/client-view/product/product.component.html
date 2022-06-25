@@ -30,7 +30,7 @@
             <p class="card-text" style=""><span>{{selectedProduct.descripcion}}</span></p>
           </div>
           <h2 class="card-text text-center"><b>${{selectedProduct.precio | number}}</b></h2>
-          <button class="col-12 btn btn-success">Agregar</button>
+          <button class="col-12 btn btn-success" (click)="guardarProductos()">Agregar</button>
         </div>
       </div>
     </div>

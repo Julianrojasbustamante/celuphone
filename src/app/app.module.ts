@@ -20,6 +20,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProductComponent } from './client-view/product/product.component';
 import { RegisterComponent } from './core/register/register.component';
 import {FormsModule} from "@angular/forms";
+import {DataServices} from "./services/data.services";
+import { HttpClientModule } from "@angular/common/http";
+import { ShopingCartComponent } from './client-view/shoping-cart/shoping-cart.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import {FormsModule} from "@angular/forms";
     CatalogueComponent,
     AboutPageComponent,
     ProductComponent,
-    RegisterComponent
+    RegisterComponent,
+    ShopingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -44,9 +48,10 @@ import {FormsModule} from "@angular/forms";
     MatFormFieldModule,
     MatCardModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
