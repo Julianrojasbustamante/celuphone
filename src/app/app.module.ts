@@ -24,7 +24,6 @@ import {DataServices} from "./services/data.services";
 import { HttpClientModule } from "@angular/common/http";
 import { ShopingCartComponent } from './client-view/shoping-cart/shoping-cart.component';
 import {AdminModule} from "./admin/admin.module";
-import { DataTablesModule } from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -53,7 +52,6 @@ import { DataTablesModule } from "angular-datatables";
     FormsModule,
     HttpClientModule,
     AdminModule,
-    DataTablesModule,
   ],
   providers: [DataServices],
   bootstrap: [AppComponent]
