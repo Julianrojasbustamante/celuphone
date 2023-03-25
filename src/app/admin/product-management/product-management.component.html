@@ -1,8 +1,67 @@
 <div class="container">
   <div class="content">
     <div class="row">
+      <p class="my-5 fs-1">Administrador de productos</p>
+      <div class="col-3">
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+          <input type="text" class="form-control" placeholder="Nombre del poducto">
+        </div>
+      </div>
+      <div class="col-3">
+        <button type="button" class="btn btn-primary">Filtrar</button>
+      </div>
       <div class="col-12">
-        <h1>Hola Carol</h1>
+        <button type="button" class="btn btn-primary float-end">Registrar</button>
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Precio</th>
+            <th class="text-center" scope="col">Unidades disponibles</th>
+            <th scope="col">Acciones</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Teclado Mecanico</td>
+            <td>$195.000</td>
+            <td class="text-center">25</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+                <button type="button" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Torre Gamer</td>
+            <td>$8.000.000</td>
+            <td class="text-center">8</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+                <button type="button" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Mouse inhalambrico</td>
+            <td>$500.000</td>
+            <td class="text-center">88</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-danger"><i class="far fa-trash-alt"></i></button>
+                <button type="button" class="btn btn-sm btn-success"><i class="fas fa-edit"></i></button>
+              </div>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
