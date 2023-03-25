@@ -49,6 +49,7 @@ export class HeaderComponent implements OnInit {
         'Bienvenido Julián Rojas Bustamante!',
         'success'
       )
+      this.router.navigate(['admin']);
     }else
       Swal.fire(
         'Inicio de sesión fallido',

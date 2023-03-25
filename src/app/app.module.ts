@@ -23,6 +23,7 @@ import {FormsModule} from "@angular/forms";
 import {DataServices} from "./services/data.services";
 import { HttpClientModule } from "@angular/common/http";
 import { ShopingCartComponent } from './client-view/shoping-cart/shoping-cart.component';
+import { DataTablesModule } from "angular-datatables";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { ShopingCartComponent } from './client-view/shoping-cart/shoping-cart.co
     MatCardModule,
     FontAwesomeModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    DataTablesModule,
   ],
   providers: [DataServices],
   bootstrap: [AppComponent]
